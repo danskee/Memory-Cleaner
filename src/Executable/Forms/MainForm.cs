@@ -47,7 +47,7 @@ namespace Memory_Cleaner
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         private bool allowVisible;
-        AboutDialog AboutDialog = new AboutDialog("1.6.6");
+        AboutDialog AboutDialog = new AboutDialog("1.6.7");
         SettingsForm SettingsForm = new SettingsForm();
         LicenseAgreementDialog LicenseAgreementDialog = new LicenseAgreementDialog();
         RegistryKey Startup = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
@@ -63,12 +63,12 @@ namespace Memory_Cleaner
                 case true:
                     if (Memory_Cleaner.Settings.Registry.Read("CheckedForUpdates") == "False")
                     {
-                        Calculate.Updates(Convert.ToInt32("1.6.6".Replace(".", "")));
+                        Calculate.Updates(Convert.ToInt32("1.6.7".Replace(".", "")));
                     }
                     break;
 
                 case false:
-                    Calculate.Updates(Convert.ToInt32("1.6.6".Replace(".", "")));
+                    Calculate.Updates(Convert.ToInt32("1.6.7".Replace(".", "")));
                     break;
             }
 
@@ -234,12 +234,6 @@ namespace Memory_Cleaner
                     break;
             }
 
-            if (!File.Exists("Memory Cleaner.dll"))
-            {
-                MessageBox.Show("Memory Cleaner.dll missing!", "Missing DLL", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
-
             SaveSettings();
         }
 
@@ -319,7 +313,7 @@ namespace Memory_Cleaner
 
         private void CheckForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Calculate.Updates(Convert.ToInt32("1.6.6".Replace(".", "")));
+            Calculate.Updates(Convert.ToInt32("1.6.7".Replace(".", "")));
         }
 
         public void SaveSettings()
